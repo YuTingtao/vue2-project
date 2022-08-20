@@ -4,26 +4,16 @@
             :default-active="$route.meta.activePath || $route.path"
             router
         >
-            <el-menu-item index="/index">
-                <i class="el-icon-house"></i>
-                <span>系统首页</span>
-            </el-menu-item>
-            <el-submenu index="/">
-                <template #title>
-                    <i class="el-icon-magic-stick"></i>
-                    <span>使用案例</span>
-                </template>
-                <el-menu-item index="/svgIcon">
-                    <span>svgIcon</span>
-                </el-menu-item>
-            </el-submenu>
+            <menuItem v-for="item in menus" :key="item.id" :item="item"></menuItem>
         </el-menu>
     </el-scrollbar>
 </template>
 
 <script>
+import menuItem from './components/menuItem.vue'
+
 export default {
-    components: {},
+    components: { menuItem },
     data() {
         return {}
     },
@@ -46,6 +36,9 @@ export default {
     width: 220px;
     background: #fff;
     border-right: 1px solid $bd-color;
+    .el-submenu__title i{
+        color: #666;
+    }
 }
 
 .g-menu{

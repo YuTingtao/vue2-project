@@ -13,7 +13,24 @@ const store = new Vuex.Store({
             menus: [], // 菜单
         };
     },
-    getters: {},
+    getters: {
+        // 扁平菜单路径
+        menuPaths(state) {
+            return getFlatPaths(state.menus);
+        },
+        // 首个菜单路径
+        firstMenuPath(state) {
+            let res = '/login';
+            if (state.menus.length > 0) {
+                let item = state.menus[0];
+                res = item.redirect || item.path;
+                if (item.children && item.children.length > 0) {
+                    res = item.children[0].redirect || item.children[0].path;
+                }
+            }
+            return res;
+        },
+    },
     mutations: {
         // 登录
         setLogin(state, data) {
@@ -30,18 +47,31 @@ const store = new Vuex.Store({
         // 设置菜单
         setMenus(state, data) {
             state.menus = data;
-        }
+        },
     },
     actions: {
         // 获取菜单
-        getMunus({ commit }) {
+        getMenus({ commit }) {
             commit('setMenus', menuData);
-        }
+        },
     },
     modules: {
         dataDic, // 数据字典
     },
 });
+
+// 获取菜单扁平路径
+function getFlatPaths(menus, res = []) {
+    menus.forEach((item) => {
+        if (item.path) {
+            res.push(item.path);
+        }
+        if (item.children && item.children.length > 0) {
+            getFlatPaths(item.children, res);
+        }
+    });
+    return res;
+}
 
 // 防止vuex刷新失效
 window.addEventListener('beforeunload', () => {

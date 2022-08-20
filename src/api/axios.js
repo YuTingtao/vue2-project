@@ -1,12 +1,12 @@
 import Axios from 'axios';
 import store from '../store'
 import router from '../router'
-import { ElMessage } from 'element-ui'
+import { Message } from 'element-ui'
 
 // message提示
 function toast(msg) {
-    ElMessage.closeAll();
-    ElMessage.error({
+    Message.closeAll();
+    Message.error({
         message: msg,
         duration: 2000,
     });
@@ -21,7 +21,7 @@ function toLogin() {
     }
     router.push(path);
     store.commit('setLogout');
-};
+}
 
 const axios = Axios.create({
     // baseURL: '',

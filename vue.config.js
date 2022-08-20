@@ -23,7 +23,7 @@ module.exports = {
             .use('svg-sprite-loader')
             .loader('svg-sprite-loader')
             .options({
-                symbolId: 'icon-[name]'
+                symbolId: 'icon-[name]',
             })
             .end();
         // 打包分析

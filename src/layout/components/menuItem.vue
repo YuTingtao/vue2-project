@@ -4,12 +4,12 @@
             v-if="!item.children || item.children.filter(item => !item.hidden).length < 1"
             :index="item.redirect || item.path"
         >
-            <el-icon v-if="item.icon"><component :is="item.icon"></component></el-icon>
+            <i :class="item.icon"></i>
             <span>{{ item.title }}</span>
         </el-menu-item>
-        <el-submenu v-else :index="item.redirect || item.path">
+        <el-submenu v-else :index="item.path || item.redirect">
             <template #title>
-                <el-icon v-if="item.icon"><component :is="item.icon"></component></el-icon>
+                <i :class="item.icon"></i>
                 <span>{{ item.title }}</span>
             </template>
             <menuItem
@@ -30,9 +30,7 @@ export default {
         }
     },
     data() {
-        return {
-
-        }
+        return {}
     },
 }
 </script>

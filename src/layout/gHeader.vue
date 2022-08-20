@@ -5,7 +5,7 @@
             <h2>管理后台</h2>
         </router-link>
         <div class="g-header-right">
-            <el-dropdown trigger="hover">
+            <el-dropdown trigger="hover" placement="bottom">
                 <div class="dropdown-title">
                     <el-avatar
                         :src="userInfo.avatar"
