@@ -16,11 +16,17 @@ const routes = [
                 path: '/index',
                 name: 'index',
                 component: () => import(/* webpackChunkName: "index" */ '@/views/index/index.vue'),
+                meta: {
+                    // activePath: '', // 导航高亮
+                },
             },
             {
                 path: '/svgIcon',
                 name: 'svgIcon',
                 component: () => import(/* webpackChunkName: "svgIcon" */ '@/views/useCase/svgIcon.vue'),
+                meta: {
+                    // activePath: '', // 导航高亮
+                },
             },
         ],
     },
