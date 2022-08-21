@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        欢迎登录系统！当前时间：{{ formatDate(Date.now()) }}
+        欢迎登录系统！访问时间：{{ formatDate(Date.now()) }}
     </div>
 </template>
 
