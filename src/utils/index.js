@@ -9,5 +9,5 @@ contexts.keys().forEach(key => {
 
 // 使用时 import { xx } from '@/utils
 module.exports = {
-    ...modules,
-};
+    ...modules
+}
