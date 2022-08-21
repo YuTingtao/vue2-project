@@ -1,4 +1,4 @@
-// 模块化自动导入
+// 自动化导入
 const contexts = require.context('./', false, /\.js$/);
 const modules = {};
 
