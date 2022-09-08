@@ -13,6 +13,9 @@ export default {
 
         }
     },
+    created() {
+
+    },
     methods: {
 
     }

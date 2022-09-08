@@ -26,45 +26,45 @@
     </div>
 </template>
 
-<script>
+<!-- 组合式API写法 -->
+<script setup>
+import { ref, reactive } from 'vue'
+import store from '@/store'
+import router from '@/router'
 import loginApi from '@/api/user/login.js'
 
-export default {
-    data() {
-        return {
-            loginForm: {
-                userName: 'admin',
-                password: '123456',
-            },
-            rules: {
-                userName: [{ required: true, message: '请输入账号/手机号/邮箱', trigger: 'blur' }],
-                password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
-            }
+const route = router.currentRoute;
+
+const loginForm = reactive({
+    userName: 'admin',
+    password: '123456',
+})
+
+const rules = reactive({
+    userName: [{ required: true, message: '请输入账号/手机号/邮箱', trigger: 'blur' }],
+    password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+})
+
+const formRef = ref();
+function handleSubmit() {
+    formRef.value.validate((valid) => {
+        if (valid) {
+            handleLogin();
         }
-    },
-    methods: {
-        // 提交表单
-        handleSubmit() {
-            this.$refs['formRef'].validate((valid) => {
-                if (valid) {
-                    this.handleLogin();
-                }
-            });
-        },
-        // 登录
-        async handleLogin() {
-            this.$store.commit('setLogin', {
-                token: 'Token-123456789',
-                userInfo: { realName: 'admin', avatar: '' },
-            });
-            await this.$store.dispatch('getMenus');
-            sessionStorage.vuex = JSON.stringify(this.$store.state);
-            if (this.$route.query.redirect) {
-                this.$router.replace(this.$route.query.redirect);
-            } else {
-                this.$router.replace('/');
-            }
-        },
+    })
+}
+// 登录
+async function handleLogin() {
+    store.commit('setLogin', {
+        token: 'Token-123456789',
+        userInfo: { realName: 'admin', avatar: '' },
+    })
+    await store.dispatch('getMenus');
+    sessionStorage.vuex = JSON.stringify(store.state);
+    if (route.query.redirect && route.query.redirect != '/login') {
+        router.replace(route.query.redirect);
+    } else {
+        router.push('/');
     }
 }
 </script>
