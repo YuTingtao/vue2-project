@@ -5,6 +5,7 @@
     </div>
 </template>
 
+<!-- 选项式API -->
 <script>
 export default {
     data() {

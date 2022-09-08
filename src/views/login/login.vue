@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import loginApi from '@/api/user/login.js';
+import loginApi from '@/api/user/login.js'
 
 export default {
     data() {
