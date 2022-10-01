@@ -10,11 +10,11 @@ export default {
     computed: {
         // 菜单路径数组
         menuPaths() {
-            return ['/', '/login', ...this.$store.getters.menuPaths];
+            return ['/', '/login', ...this.$store.getters.menuPaths]
         },
         // 第一个菜单路径
         firstMenuPath() {
-            return this.$store.getters.firstMenuPath;
+            return this.$store.getters.firstMenuPath
         }
     },
     watch: {
@@ -22,9 +22,9 @@ export default {
         '$route.path'(val) {
             if (!this.menuPaths.includes(val)) {
                 if (val != '/index') {
-                    this.$message.error('暂无权限访问');
+                    this.$message.error('暂无权限访问')
                 }
-                this.$router.replace(this.firstMenuPath);
+                this.$router.replace(this.firstMenuPath)
             }
         }
     }

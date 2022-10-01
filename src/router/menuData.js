@@ -5,7 +5,7 @@ export default [
         path: '/index',
         name: 'index',
         icon: 'el-icon-house',
-        hidden: 0,
+        hidden: 0
     },
     {
         id: 2000,
@@ -23,8 +23,8 @@ export default [
                 name: 'svgIcon',
                 redirect: '',
                 icon: '',
-                hidden: 0,
-            },
-        ],
-    },
-];
+                hidden: 0
+            }
+        ]
+    }
+]

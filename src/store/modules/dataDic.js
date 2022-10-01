@@ -15,4 +15,4 @@ const dataDic = {
     }
 }
 
-export default dataDic;
+export default dataDic

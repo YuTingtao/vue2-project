@@ -18,25 +18,27 @@ const routes = [
                 component: () => import(/* webpackChunkName: "index" */ '@/views/index/index.vue'),
                 meta: {
                     // activePath: '', // 导航高亮
-                },
+                }
             },
             {
                 path: '/svgIcon',
                 name: 'svgIcon',
-                component: () => import(/* webpackChunkName: "svgIcon" */ '@/views/useCase/svgIcon.vue'),
+                component: () => import(
+                    /* webpackChunkName: "svgIcon" */ '@/views/useCase/svgIcon.vue'
+                ),
                 meta: {
                     // activePath: '', // 导航高亮
-                },
-            },
-        ],
+                }
+            }
+        ]
     },
     // 登录
     {
         path: '/login',
         name: 'login',
-        component: () => import('@/views/login/login.vue'),
-    },
-];
+        component: () => import('@/views/login/login.vue')
+    }
+]
 
 const router = new VueRouter({
     routes,
@@ -44,20 +46,20 @@ const router = new VueRouter({
     base: '/',     // 基路径
     scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
-            return savedPosition;
+            return savedPosition
         } else {
-            return { x: 0, y: 0 };
+            return { x: 0, y: 0 }
         }
-    },
-});
+    }
+})
 
 // 路由拦截
 router.beforeEach((to, from, next) => {
     if (!store.state.token && to.path != '/login') {
-        next('/login');
+        next('/login')
     } else {
-        next();
+        next()
     }
 })
 
-export default router;
+export default router

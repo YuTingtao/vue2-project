@@ -34,14 +34,14 @@ export default {
     },
     computed: {
         userInfo() {
-            return this.$store.state.userInfo;
-        },
+            return this.$store.state.userInfo
+        }
     },
     methods: {
         // 退出登录
         handleLogout() {
-            this.$store.commit('setLogout');
-            this.$router.replace('/login');
+            this.$store.commit('setLogout')
+            this.$router.replace('/login')
         }
     }
 }

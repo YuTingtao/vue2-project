@@ -10,23 +10,23 @@ export default {
     props: {
         name: {
             type: String,
-            required: true,
+            required: true
         },
         size: {
             type: [String, Number],
-            default: '1em',
+            default: '1em'
         },
         color: {
             type: String,
-            default: 'currentColor',
-        },
+            default: 'currentColor'
+        }
     },
     computed: {
         symbolId() {
-            return `#icon-${this.name}`;
-        },
-    },
-};
+            return `#icon-${this.name}`
+        }
+    }
+}
 </script>
 
 <style lang="scss" scoped>

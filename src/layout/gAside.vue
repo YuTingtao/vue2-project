@@ -1,8 +1,8 @@
 <template>
     <el-scrollbar class="g-aside">
         <el-menu class="g-menu"
-            :default-active="$route.meta.activePath || $route.path"
-            router
+                 :default-active="$route.meta.activePath || $route.path"
+                 router
         >
             <menuItem v-for="item in menus" :key="item.id" :item="item"></menuItem>
         </el-menu>
@@ -19,7 +19,7 @@ export default {
     },
     computed: {
         menus() {
-            return this.$store.state.menus;
+            return this.$store.state.menus
         }
     },
     methods: {}

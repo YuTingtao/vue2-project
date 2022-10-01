@@ -17,7 +17,7 @@ module.exports = {
     },
     plugins: ['vue'],
     rules: {
-        'indent': ['error', 4],                               // 缩进4个空格
+        'indent': ['error', 4, { 'SwitchCase': 1 }],          // 缩进4个空格
         'vue/html-indent': ['error', 4],
         'semi': ['error', 'never'],                           // js结尾不加分号
         'quotes': ['error', 'single', { 'allowTemplateLiterals': true }], // js定义字符串使用单引号
@@ -34,6 +34,7 @@ module.exports = {
         'no-multiple-empty-lines': ['error', { 'max': 2 }],   // 最大2空行
         'no-unused-vars': 'off',                              // 未使用变量不报错
         'vue/no-unused-vars': 'off',
-        'vue/multi-word-component-names': 'off'
+        'vue/multi-word-component-names': 'off',
+        'vue/no-deprecated-v-on-native-modifier': 'off'
     }
 }

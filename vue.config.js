@@ -1,6 +1,6 @@
 const path = require('path')
 function resolve(dir) {
-    return path.join(__dirname, dir);
+    return path.join(__dirname, dir)
 }
 
 module.exports = {
@@ -9,12 +9,12 @@ module.exports = {
     transpileDependencies: true,
     productionSourceMap: false,
     chainWebpack(config) {
-        config.resolve.alias.set('@', resolve('src'));
+        config.resolve.alias.set('@', resolve('src'))
         // svg图标
         config.module
             .rule('svg')
             .exclude.add(resolve('src/assets/icon'))
-            .end();
+            .end()
         config.module
             .rule('icon')
             .test(/\.svg$/)
@@ -23,22 +23,22 @@ module.exports = {
             .use('svg-sprite-loader')
             .loader('svg-sprite-loader')
             .options({
-                symbolId: 'icon-[name]',
+                symbolId: 'icon-[name]'
             })
-            .end();
+            .end()
         // 打包分析
         if (process.env.NODE_ENV === 'production') {
             config.plugin('webpack-bundle-analyzer')
                 .use(require('webpack-bundle-analyzer')
-                .BundleAnalyzerPlugin);
+                    .BundleAnalyzerPlugin)
         }
     },
     css: {
         loaderOptions: {
             scss: {
-                additionalData: `@import "~@/assets/scss/base/vars.scss";`,
-            },
-        },
+                additionalData: `@import "~@/assets/scss/base/vars.scss";`
+            }
+        }
     },
     devServer: {
         host: 'localhost',
@@ -47,8 +47,8 @@ module.exports = {
         // 代理
         proxy: {
             '/api': {
-                target: 'http://localhost:3000',
-            },
-        },
-    },
-};
+                target: 'http://localhost:3000'
+            }
+        }
+    }
+}

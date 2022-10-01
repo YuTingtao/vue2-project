@@ -10,7 +10,7 @@ import './assets/scss/base/main.scss'
 import './components/svgIcon/index.js'
 
 Vue.use(ElementUI, {
-    size: 'medium',
+    size: 'medium'
 })
 // EventBus
 Vue.prototype.$bus = new Vue()
