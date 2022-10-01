@@ -10,9 +10,7 @@ import { ref, reactive, computed } from 'vue'
 import store from '@/store'
 import { formatDate } from '@/utils'
 
-const userInfo = computed(() => store.state.userInfo);
+const userInfo = computed(() => store.state.userInfo)
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
