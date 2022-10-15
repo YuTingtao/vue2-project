@@ -4,7 +4,7 @@ export default function(num) {
     // 基本单位
     const cnIntRadice = ['', '十', '百', '千']
     // 最大处理的数字
-    const maxNum = 9999999999999.99
+    const maxNum = 999999999999999
     // 整数部分
     let integerNum = num.toString()
 
