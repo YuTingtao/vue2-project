@@ -1,15 +1,15 @@
-$primary: #409EFF;
+$primary: #409eff;
 $bd-color: #e6e6e6;
 
 @mixin ellipsis($line: 1) {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    @if ($line == 1) {
-        white-space: nowrap;
-    } @else {
-        word-break: break-all;
-        display: -webkit-box;
-        -webkit-line-clamp: $line;
-        -webkit-box-orient: vertical;
-    }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @if ($line == 1) {
+    white-space: nowrap;
+  } @else {
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+  }
 }

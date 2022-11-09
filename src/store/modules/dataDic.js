@@ -1,18 +1,18 @@
 // 数据字典
 const dataDic = {
-    namespaced: true,
-    state: () => ({
-        data: []
-    }),
-    getters: {
+  namespaced: true,
+  state: () => ({
+    data: []
+  }),
+  getters: {
 
-    },
-    mutations: {
+  },
+  mutations: {
 
-    },
-    actions: {
+  },
+  actions: {
 
-    }
+  }
 }
 
 export default dataDic

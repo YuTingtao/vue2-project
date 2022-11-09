@@ -1,49 +1,49 @@
 <template>
-    <div class="g-header">
-        <router-link class="g-logo" to="/">
-            <img src="@/assets/img/logo.png" alt="">
-            <h2>管理后台</h2>
-        </router-link>
-        <div class="g-header-right">
-            <el-dropdown trigger="hover" placement="bottom">
-                <div class="dropdown-title">
-                    <el-avatar
-                        :src="userInfo.avatar"
-                        :size="34"
-                        icon="el-icon-user-solid"
-                        shape="circle"
-                        fit="cover">
-                    </el-avatar>
-                    <span>{{ userInfo.realName || userInfo.nickName }}</span>
-                    <i class="el-icon-arrow-down"></i>
-                </div>
-                <template #dropdown>
-                    <el-dropdown-menu>
-                        <el-dropdown-item @click.native="handleLogout">退出</el-dropdown-item>
-                    </el-dropdown-menu>
-                </template>
-            </el-dropdown>
+  <div class="g-header">
+    <router-link class="g-logo" to="/">
+      <img src="@/assets/img/logo.png" alt="">
+      <h2>管理后台</h2>
+    </router-link>
+    <div class="g-header-right">
+      <el-dropdown trigger="hover" placement="bottom">
+        <div class="dropdown-title">
+          <el-avatar
+            :src="userInfo.avatar"
+            :size="34"
+            icon="el-icon-user-solid"
+            shape="circle"
+            fit="cover">
+          </el-avatar>
+          <span>{{ userInfo.realName || userInfo.nickName }}</span>
+          <i class="el-icon-arrow-down"></i>
         </div>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item @click.native="handleLogout">退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {}
-    },
-    computed: {
-        userInfo() {
-            return this.$store.state.userInfo
-        }
-    },
-    methods: {
-        // 退出登录
-        handleLogout() {
-            this.$store.commit('setLogout')
-            this.$router.replace('/login')
-        }
+  data() {
+    return {}
+  },
+  computed: {
+    userInfo() {
+      return this.$store.state.userInfo
     }
+  },
+  methods: {
+    // 退出登录
+    handleLogout() {
+      this.$store.commit('setLogout')
+      this.$router.replace('/login')
+    }
+  }
 }
 </script>
 

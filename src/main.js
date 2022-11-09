@@ -10,14 +10,14 @@ import './assets/scss/base/main.scss'
 import './components/svgIcon/index.js'
 
 Vue.use(ElementUI, {
-    size: 'medium'
+  size: 'medium'
 })
 // EventBus
 Vue.prototype.$bus = new Vue()
 Vue.config.productionTip = false
 
 new Vue({
-    router,
-    store,
-    render: h => h(App)
+  router,
+  store,
+  render: h => h(App)
 }).$mount('#app')

@@ -1,12 +1,12 @@
 <!-- 全局layout -->
 <template>
-    <div class="g-layout">
-        <gHeader></gHeader>
-        <div class="g-body">
-            <gAside></gAside>
-            <router-view class="g-page"></router-view>
-        </div>
+  <div class="g-layout">
+    <gHeader></gHeader>
+    <div class="g-body">
+      <gAside></gAside>
+      <router-view class="g-page"></router-view>
     </div>
+  </div>
 </template>
 
 <script>
@@ -14,12 +14,12 @@ import gHeader from './gHeader.vue'
 import gAside from './gAside.vue'
 
 export default {
-    components: { gHeader, gAside },
-    data() {
-        return {}
-    },
-    computed: {},
-    methods: {}
+  components: { gHeader, gAside },
+  data() {
+    return {}
+  },
+  computed: {},
+  methods: {}
 }
 </script>
 
