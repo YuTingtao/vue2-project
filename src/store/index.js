@@ -1,5 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
+import VuexPersistence from 'vuex-persist'
+const vuexLocal = new VuexPersistence({
+  key: 'vuex',
+  storage: window.sessionStorage
+})
+
 import dataDic from './modules/dataDic.js'
 import menuData from '../router/menuData.js'
 
@@ -36,13 +43,11 @@ const store = new Vuex.Store({
     setLogin(state, data) {
       state.token = data.token
       state.userInfo = data.userInfo
-      sessionStorage.vuex = state
     },
     // 退出登录
     setLogout(state) {
       state.token = ''
       state.userInfo = {}
-      sessionStorage.removeItem('vuex')
     },
     // 设置菜单
     setMenus(state, data) {
@@ -57,7 +62,8 @@ const store = new Vuex.Store({
   },
   modules: {
     dataDic // 数据字典
-  }
+  },
+  plugins: [vuexLocal.plugin]
 })
 
 // 获取菜单扁平路径
@@ -71,21 +77,6 @@ function getFlatPaths(menus, res = []) {
     }
   })
   return res
-}
-
-// 防止vuex刷新失效
-window.addEventListener('beforeunload', () => {
-  sessionStorage.vuex = JSON.stringify(store.state)
-})
-if (/iphone|ipad|ipod/.test(navigator.userAgent)) {
-  window.addEventListener('pagehide', () => {
-    sessionStorage.vuex = JSON.stringify(store.state)
-  })
-}
-if (sessionStorage.vuex) {
-  store.replaceState(
-    Object.assign({}, store.state, JSON.parse(sessionStorage.vuex))
-  )
 }
 
 export default store

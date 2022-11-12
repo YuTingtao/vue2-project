@@ -6,7 +6,7 @@ function resolve(dir) {
 module.exports = {
   publicPath: './',
   outputDir: 'docs', // 打包生产的目录
-  transpileDependencies: true,
+  transpileDependencies: ['vuex-persist'],
   productionSourceMap: false,
   chainWebpack(config) {
     config.resolve.alias.set('@', resolve('src'))

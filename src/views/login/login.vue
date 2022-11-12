@@ -63,7 +63,6 @@ async function handleLogin() {
     userInfo: { realName: 'admin', avatar: '' }
   })
   await store.dispatch('getMenus')
-  sessionStorage.vuex = JSON.stringify(store.state)
   if (route.query.redirect && route.query.redirect != '/login') {
     router.replace(route.query.redirect)
   } else {
