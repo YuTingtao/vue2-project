@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
+import { Message } from 'element-ui'
 
 Vue.use(VueRouter)
 
@@ -23,9 +24,7 @@ const routes = [
       {
         path: '/svgIcon',
         name: 'svgIcon',
-        component: () => import(
-          /* webpackChunkName: "svgIcon" */ '@/views/useCase/svgIcon.vue'
-        ),
+        component: () => import(/* webpackChunkName: "svgIcon" */ '@/views/useCase/svgIcon.vue'),
         meta: {
           // activePath: '', // 导航高亮
         }
@@ -43,7 +42,7 @@ const routes = [
 const router = new VueRouter({
   routes,
   model: 'hash', // "hash" | "history" | "abstract"
-  base: '/',     // 基路径
+  base: '/',     // 基础路径
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
@@ -55,8 +54,19 @@ const router = new VueRouter({
 
 // 路由拦截
 router.beforeEach((to, from, next) => {
-  if (!store.state.token && to.path != '/login') {
+  // 菜单路径
+  const menuPaths = ['/', '/login', ...store.getters.menuPaths]
+  // 第一个菜单路径
+  const firstMenuPath = store.getters.firstMenuPath
+
+  // 路由拦截
+  if (!store.state.token && to.path !== '/login') {
     next('/login')
+  } else if (!menuPaths.includes(to.path)) {
+    if (to.path != '/index') {
+      Message.error('暂无权限访问')
+    }
+    next(firstMenuPath)
   } else {
     next()
   }
