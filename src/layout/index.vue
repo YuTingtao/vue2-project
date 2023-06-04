@@ -1,20 +1,20 @@
 <!-- 全局layout -->
 <template>
   <div class="g-layout">
-    <gHeader></gHeader>
+    <GHeader></GHeader>
     <div class="g-body">
-      <gAside></gAside>
+      <GAside></GAside>
       <router-view class="g-page"></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import gHeader from './gHeader.vue'
-import gAside from './gAside.vue'
+import GHeader from './GHeader.vue'
+import GAside from './GAside.vue'
 
 export default {
-  components: { gHeader, gAside },
+  components: { GHeader, GAside },
   data() {
     return {}
   },

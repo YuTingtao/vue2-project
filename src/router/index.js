@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
 import { Message } from 'element-ui'
+import checkVersion from '../utils/checkVersion.js'
 
 Vue.use(VueRouter)
 
@@ -11,12 +12,12 @@ const routes = [
     path: '/',
     name: 'layout',
     redirect: '/index',
-    component: () => import(/* webpackChunkName: "layout" */ '@/layout/index.vue'),
+    component: () => import(/* webpackChunkName: "layout" */ '@/layout/Index.vue'),
     children: [
       {
         path: '/index',
         name: 'index',
-        component: () => import(/* webpackChunkName: "index" */ '@/views/index/index.vue'),
+        component: () => import(/* webpackChunkName: "index" */ '@/views/index/Index.vue'),
         meta: {
           // activePath: '', // 导航高亮
         }
@@ -24,7 +25,7 @@ const routes = [
       {
         path: '/svgIcon',
         name: 'svgIcon',
-        component: () => import(/* webpackChunkName: "svgIcon" */ '@/views/useCase/svgIcon.vue'),
+        component: () => import(/* webpackChunkName: "svgIcon" */ '@/views/useCase/SvgIcon.vue'),
         meta: {
           // activePath: '', // 导航高亮
         }
@@ -35,7 +36,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/login/login.vue')
+    component: () => import('@/views/login/Login.vue')
   }
 ]
 
@@ -70,6 +71,10 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+})
+
+router.onError((error) => {
+  checkVersion() // 版本检测
 })
 
 export default router

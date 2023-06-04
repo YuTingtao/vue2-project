@@ -27,11 +27,11 @@ module.exports = {
       })
       .end()
     // 打包分析
-    if (process.env.NODE_ENV === 'production') {
-      config.plugin('webpack-bundle-analyzer')
-        .use(require('webpack-bundle-analyzer')
-          .BundleAnalyzerPlugin)
-    }
+    // if (process.env.NODE_ENV === 'production') {
+    //   config.plugin('webpack-bundle-analyzer')
+    //     .use(require('webpack-bundle-analyzer')
+    //       .BundleAnalyzerPlugin)
+    // }
   },
   css: {
     loaderOptions: {
@@ -47,7 +47,9 @@ module.exports = {
     // 代理
     proxy: {
       '/api': {
-        target: 'http://localhost:3000'
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        // rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   }

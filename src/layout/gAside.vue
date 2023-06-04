@@ -1,19 +1,19 @@
 <template>
   <el-scrollbar class="g-aside">
-    <el-menu class="g-menu"
-             :default-active="$route.meta.activePath || $route.path"
-             router
-    >
-      <menuItem v-for="item in menus" :key="item.id" :item="item"></menuItem>
+    <el-menu 
+      class="g-menu"
+      :default-active="$route.meta.activePath || $route.path"
+      router>
+      <MenuItem v-for="item in menus" :key="item.id" :item="item"></MenuItem>
     </el-menu>
   </el-scrollbar>
 </template>
 
 <script>
-import menuItem from './components/menuItem.vue'
+import MenuItem from './components/MenuItem.vue'
 
 export default {
-  components: { menuItem },
+  components: { MenuItem },
   data() {
     return {}
   },
