@@ -1,5 +1,5 @@
 // 检测版本，提示更新
-import { ElMessageBox } from 'element-ui'
+import { MessageBox } from 'element-ui'
 
 let flag
 
@@ -19,7 +19,7 @@ function checkVersion() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var res = JSON.parse(xhr.responseText)
       if (res.version != sessionStorage.appVersion) {
-        ElMessageBox.alert('检测到版本有更新，请刷新页面', '版本更新提示', {
+        MessageBox.alert('检测到版本有更新，请刷新页面', '版本更新提示', {
           callback: () => {
             location.reload(true)
           }
