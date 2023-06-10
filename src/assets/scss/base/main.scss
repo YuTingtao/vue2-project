@@ -1,6 +1,12 @@
 @import './reset.css';
 
-html,
-body {
+html, body {
   min-width: 1300px;
+}
+
+.v-enter-active, .v-leave-active {
+  transition: opacity 0.3s;
+}
+.v-enter, .v-leave-to {
+  opacity: 0;
 }
