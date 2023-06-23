@@ -22,7 +22,7 @@ module.exports = {
     'semi': ['error', 'never'],                           // js结尾不加分号
     'quotes': ['error', 'single', { 'allowTemplateLiterals': true }], // js定义字符串使用单引号
     'camelcase': 'error',                                 // 驼峰命名
-    'comma-dangle': ['error', 'never'],                   // 禁止使用拖尾逗号
+    'comma-dangle': ['error', 'only-multiline'],          // 使用拖尾逗号
     'comma-spacing': ['error', { 'before': false, 'after': true }], // 逗号后面带一个空格
     'comma-style': ['error', 'last'],                     // 逗号放置在当前行末尾
     'func-call-spacing': ['error', 'never'],              // 函数调用时括号前不带空格
