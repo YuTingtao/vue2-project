@@ -1,9 +1,6 @@
 <template>
   <div class="page-home">
     {{ userInfo.realName }}，欢迎登录系统！系统时间：{{ formatDate(Date.now()) }}
-    <div>
-      <img src="@/assets/image/logo2.png" alt="">
-    </div>
   </div>
 </template>
 
