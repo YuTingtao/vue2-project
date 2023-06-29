@@ -1,7 +1,7 @@
 <template>
   <div class="g-header">
     <router-link class="g-logo" to="/">
-      <img src="@/assets/img/logo.png" alt="">
+      <img src="@/assets/image/logo.png" alt="">
       <h2>管理后台</h2>
     </router-link>
     <div class="g-header-right">

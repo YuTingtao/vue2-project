@@ -10,6 +10,15 @@ module.exports = {
   productionSourceMap: false,
   chainWebpack(config) {
     config.resolve.alias.set('@', resolve('src'))
+    // 图片压缩
+    config.module
+      .rule('images')
+      .use('image-webpack-loader')
+      .loader('image-webpack-loader')
+      .options({
+        bypassOnDebug: true
+      })
+      .end()
     // svg图标
     config.module
       .rule('svg')
@@ -29,8 +38,7 @@ module.exports = {
     // 打包分析
     // if (process.env.NODE_ENV === 'production') {
     //   config.plugin('webpack-bundle-analyzer')
-    //     .use(require('webpack-bundle-analyzer')
-    //       .BundleAnalyzerPlugin)
+    //     .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
     // }
   },
   css: {
