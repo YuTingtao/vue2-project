@@ -12,17 +12,17 @@
         <i :class="item.icon"></i>
         <span>{{ item.title }}</span>
       </template>
-      <menuItem
+      <MenuItem
         v-for="item2 in item.children" :key="item2.id"
         :item="item2">
-      </menuItem>
+      </MenuItem>
     </el-submenu>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'menuItem',
+  name: 'MenuItem',
   props: {
     item: {
       type: Object,

@@ -60,7 +60,7 @@ function handleSubmit() {
 async function handleLogin() {
   store.commit('setLogin', {
     token: 'Token-123456789',
-    userInfo: { realName: 'admin', avatar: '' }
+    userInfo: { name: 'admin', avatar: '' }
   })
   await store.dispatch('getMenus')
   if (route.query.redirect && route.query.redirect != '/login') {

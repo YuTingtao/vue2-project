@@ -17,19 +17,19 @@ const store = new Vuex.Store({
     return {
       token: '',
       userInfo: {},
-      menus: [] // 菜单
+      userMenus: [] // 菜单
     }
   },
   getters: {
     // 扁平菜单路径
     menuPaths(state) {
-      return getFlatPaths(state.menus)
+      return getFlatPaths(state.userMenus)
     },
     // 首个菜单路径
     firstMenuPath(state) {
       let res = '/login'
-      if (state.menus.length > 0) {
-        let item = state.menus[0]
+      if (state.userMenus.length > 0) {
+        let item = state.userMenus[0]
         res = item.redirect || item.path
         if (item.children && item.children.length > 0) {
           res = item.children[0].redirect || item.children[0].path
@@ -51,7 +51,7 @@ const store = new Vuex.Store({
     },
     // 设置菜单
     setMenus(state, data) {
-      state.menus = data
+      state.userMenus = data
     }
   },
   actions: {
