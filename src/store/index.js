@@ -8,7 +8,8 @@ const vuexLocal = new VuexPersistence({
 })
 
 import dataDic from './modules/dataDic.js'
-import menuData from '../router/menuData.js'
+import userMenus from '../router/userMenus.js'
+import { getFlatMenus, getFirstPath } from './utils.js'
 
 Vue.use(Vuex)
 
@@ -22,20 +23,12 @@ const store = new Vuex.Store({
   },
   getters: {
     // 扁平菜单路径
-    menuPaths(state) {
-      return getFlatPaths(state.userMenus)
+    flatMenus: (state) => {
+      return getFlatMenus(state.userMenus)
     },
     // 首个菜单路径
     firstMenuPath(state) {
-      let res = '/login'
-      if (state.userMenus.length > 0) {
-        let item = state.userMenus[0]
-        res = item.redirect || item.path
-        if (item.children && item.children.length > 0) {
-          res = item.children[0].redirect || item.children[0].path
-        }
-      }
-      return res
+      return getFirstPath(state.userMenus[0])
     }
   },
   mutations: {
@@ -50,14 +43,14 @@ const store = new Vuex.Store({
       state.userInfo = {}
     },
     // 设置菜单
-    setMenus(state, data) {
+    setUserMenus(state, data) {
       state.userMenus = data
     }
   },
   actions: {
     // 获取菜单
-    getMenus({ commit }) {
-      commit('setMenus', menuData)
+    getUserMenus({ commit }) {
+      commit('setUserMenus', userMenus)
     }
   },
   modules: {
@@ -65,18 +58,5 @@ const store = new Vuex.Store({
   },
   plugins: [vuexLocal.plugin]
 })
-
-// 获取菜单扁平路径
-function getFlatPaths(menus, res = []) {
-  menus.forEach((item) => {
-    if (item.path) {
-      res.push(item.path)
-    }
-    if (item.children && item.children.length > 0) {
-      getFlatPaths(item.children, res)
-    }
-  })
-  return res
-}
 
 export default store

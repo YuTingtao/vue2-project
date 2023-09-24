@@ -8,6 +8,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './assets/scss/base/main.scss'
 // svgIcon
 import './components/svgIcon/index.js'
+// 自定义指令
+import importDirectives from './directives'
+importDirectives()
 // 版本检测
 import checkVersion from './utils/checkVersion.js'
 

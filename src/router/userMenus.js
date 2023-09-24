@@ -1,6 +1,5 @@
 export default [
   {
-    id: 1000,
     title: '系统首页',
     path: '/index',
     name: 'index',
@@ -8,7 +7,6 @@ export default [
     hidden: 0
   },
   {
-    id: 2000,
     title: '使用案例',
     path: '',
     name: '',
@@ -17,13 +15,17 @@ export default [
     hidden: 0,
     children: [
       {
-        id: 2001,
         title: 'svg图标',
         path: '/svgIcon',
         name: 'svgIcon',
         redirect: '',
         icon: '',
-        hidden: 0
+        hidden: 0,
+        buttons: [ // 按钮权限
+          { name: 'add' },
+          { name: 'edit' },
+          { name: 'delete' }
+        ]
       }
     ]
   }

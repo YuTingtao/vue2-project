@@ -62,11 +62,11 @@ async function handleLogin() {
     token: 'Token-123456789',
     userInfo: { name: 'admin', avatar: '' }
   })
-  await store.dispatch('getMenus')
+  await store.dispatch('getUserMenus')
   if (route.query.redirect && route.query.redirect != '/login') {
     router.replace(route.query.redirect)
   } else {
-    router.push('/')
+    router.replace('/')
   }
 }
 </script>

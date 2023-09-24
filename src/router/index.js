@@ -56,16 +56,16 @@ const router = new VueRouter({
 // 路由拦截
 router.beforeEach((to, from, next) => {
   // 菜单路径
-  const menuPaths = ['/', '/login', ...store.getters.menuPaths]
+  const allMenus = ['/', '/login', ...Object.keys(store.getters.flatMenus)]
   // 第一个菜单路径
   const firstMenuPath = store.getters.firstMenuPath
 
   // 路由拦截
   if (!store.state.token && to.path !== '/login') {
     next('/login')
-  } else if (!menuPaths.includes(to.path)) {
-    if (to.path != '/index') {
-      Message.error('暂无权限访问')
+  } else if (!allMenus.includes(to.path)) {
+    if (to.path != '/' && to.path != '/404') {
+      Message.error('访问地址不存在')
     }
     next(firstMenuPath)
   } else {
