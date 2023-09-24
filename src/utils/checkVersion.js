@@ -3,7 +3,7 @@ import { MessageBox } from 'element-ui'
 
 let flag
 
-function checkVersion() {
+function checkVersion(init) {
   // 1秒内执行一次
   if (flag) {
     return
@@ -18,7 +18,7 @@ function checkVersion() {
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var res = JSON.parse(xhr.responseText)
-      if (res.version != sessionStorage.appVersion) {
+      if (!init && res.version != sessionStorage.appVersion) {
         MessageBox.alert('检测到版本有更新，请刷新页面', '版本更新提示', {
           callback: () => {
             location.reload(true)
