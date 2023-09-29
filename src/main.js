@@ -20,6 +20,8 @@ Vue.use(ElementUI, {
 // EventBus
 Vue.prototype.$bus = new Vue()
 Vue.config.productionTip = false
+// Vue.config.devtools = true
+// 处理错误
 Vue.config.errorHandler = function (err, vm, info) {
   // 版本检测
   checkVersion()
