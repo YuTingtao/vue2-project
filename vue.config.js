@@ -11,30 +11,15 @@ module.exports = {
   chainWebpack(config) {
     config.resolve.alias.set('@', resolve('src'))
     // 图片压缩
-    config.module
-      .rule('images')
-      .use('image-webpack-loader')
-      .loader('image-webpack-loader')
-      .options({
-        bypassOnDebug: true
-      })
-      .end()
+    config.module.rule('images').use('image-webpack-loader').loader('image-webpack-loader').options({
+      bypassOnDebug: true
+    }).end()
     // svg图标
-    config.module
-      .rule('svg')
-      .exclude.add(resolve('src/assets/icon'))
-      .end()
-    config.module
-      .rule('icon')
-      .test(/\.svg$/)
-      .include.add(resolve('src/assets/icon'))
-      .end()
-      .use('svg-sprite-loader')
-      .loader('svg-sprite-loader')
-      .options({
+    config.module.rule('svg').exclude.add(resolve('src/assets/icon')).end()
+    config.module.rule('icon').test(/\.svg$/).include.add(resolve('src/assets/icon')).end()
+      .use('svg-sprite-loader').loader('svg-sprite-loader').options({
         symbolId: 'icon-[name]'
-      })
-      .end()
+      }).end()
     // 打包分析
     if (process.env.NODE_ENV === 'production') {
       config.plugin('webpack-bundle-analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
