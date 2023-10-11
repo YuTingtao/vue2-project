@@ -11,9 +11,25 @@ module.exports = {
   chainWebpack(config) {
     config.resolve.alias.set('@', resolve('src'))
     // 图片压缩
-    config.module.rule('images').use('image-webpack-loader').loader('image-webpack-loader').options({
-      bypassOnDebug: true
-    }).end()
+    config.module.rule('images').test(/\.(gif|png|jpe?g|svg)$/i)
+      .use('image-webpack-loader').loader('image-webpack-loader').options({
+        mozjpeg: {
+          progressive: true,
+        },
+        optipng: {
+          enabled: false,
+        },
+        pngquant: {
+          quality: [0.65, 0.90],
+          speed: 4
+        },
+        gifsicle: {
+          interlaced: false,
+        },
+        webp: {
+          quality: 75
+        }
+      }).end()
     // svg图标
     config.module.rule('svg').exclude.add(resolve('src/assets/icon')).end()
     config.module.rule('icon').test(/\.svg$/).include.add(resolve('src/assets/icon')).end()
@@ -28,7 +44,7 @@ module.exports = {
   css: {
     loaderOptions: {
       scss: {
-        additionalData: `@import "~@/assets/scss/base/vars.scss";`
+        additionalData: `@import "~@/assets/style/vars.scss";`
       }
     }
   },

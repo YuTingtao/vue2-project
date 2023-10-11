@@ -4,8 +4,8 @@ import router from './router'
 import store from './store'
 
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-import './assets/scss/base/main.scss'
+import './assets/style/element.scss'
+import './assets/style/main.scss'
 // svgIcon
 import './components/svgIcon/index.js'
 // 自定义指令

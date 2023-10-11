@@ -1,6 +1,6 @@
 <template>
   <div class="page-home">
-    {{ userInfo.name }}，欢迎登录系统！系统时间：{{ formatDate(Date.now()) }}
+    <div>{{ userInfo.name }}，欢迎登录系统！系统时间：{{ formatDate(Date.now()) }}</div>
   </div>
 </template>
 
