@@ -23,9 +23,9 @@ const routes = [
         }
       },
       {
-        path: '/svgIcon',
-        name: 'svgIcon',
-        component: () => import(/* webpackChunkName: "svgIcon" */ '@/views/useCase/SvgIcon.vue'),
+        path: '/baseCase',
+        name: 'baseCase',
+        component: () => import(/* webpackChunkName: "baseCase" */ '@/views/useCase/BaseCase.vue'),
         meta: {
           // activePath: '', // 导航高亮
         }

@@ -11,7 +11,7 @@ module.exports = {
   chainWebpack(config) {
     config.resolve.alias.set('@', resolve('src'))
     // 图片压缩
-    config.module.rule('images').test(/\.(gif|png|jpe?g|svg)$/i)
+    config.module.rule('images').test(/\.(gif|png|jpe?g)$/i)
       .use('image-webpack-loader').loader('image-webpack-loader').options({
         mozjpeg: {
           progressive: true,

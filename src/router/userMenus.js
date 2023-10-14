@@ -10,14 +10,14 @@ export default [
     title: '使用案例',
     path: '',
     name: '',
-    redirect: '/svgIcon',
+    redirect: '/baseCase',
     icon: 'el-icon-magic-stick',
     hidden: 0,
     children: [
       {
-        title: 'svg图标',
-        path: '/svgIcon',
-        name: 'svgIcon',
+        title: '基础案例',
+        path: '/baseCase',
+        name: 'baseCase',
         redirect: '',
         icon: '',
         hidden: 0,
