@@ -12,12 +12,12 @@ const routes = [
     path: '/',
     name: 'layout',
     redirect: '/index',
-    component: () => import(/* webpackChunkName: "layout" */ '@/layout/Index.vue'),
+    component: () => import(/* webpackChunkName: "layout" */ '@/layout/index.vue'),
     children: [
       {
         path: '/index',
         name: 'index',
-        component: () => import(/* webpackChunkName: "index" */ '@/views/index/Index.vue'),
+        component: () => import(/* webpackChunkName: "index" */ '@/views/index/index.vue'),
         meta: {
           // activePath: '', // 导航高亮
         }
@@ -25,7 +25,7 @@ const routes = [
       {
         path: '/baseCase',
         name: 'baseCase',
-        component: () => import(/* webpackChunkName: "baseCase" */ '@/views/useCase/BaseCase.vue'),
+        component: () => import(/* webpackChunkName: "baseCase" */ '@/views/useCase/baseCase/index.vue'),
         meta: {
           // activePath: '', // 导航高亮
         }
@@ -36,7 +36,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/login/Login.vue')
+    component: () => import('@/views/login/index.vue')
   }
 ]
 

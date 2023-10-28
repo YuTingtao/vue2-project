@@ -73,6 +73,7 @@ async function handleLogin() {
 
 <style lang="scss" scoped>
 .login-bg {
+  position: relative;
   width: 100%;
   min-height: 100vh;
   display: flex;
