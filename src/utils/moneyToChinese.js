@@ -1,5 +1,6 @@
-/* eslint-disable no-loss-of-precision */
 /* eslint-disable semi */
+/* eslint-disable no-redeclare */
+/* eslint-disable no-loss-of-precision */
 // 金额转大写
 function moneyToChinese(money) {
   // 汉字的数字

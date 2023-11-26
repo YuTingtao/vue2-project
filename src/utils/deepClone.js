@@ -1,16 +1,17 @@
+/* eslint-disable semi */
+/* eslint-disable no-prototype-builtins */
 // 深拷贝
 function deepClone(obj) {
   if (typeof obj !== 'object' || obj == null) {
-    return obj
+    return obj;
   }
-  let clone = Array.isArray(obj) ? [] : {}
+  let clone = Array.isArray(obj) ? [] : {};
   for (let key in obj) {
-    // eslint-disable-next-line no-prototype-builtins
     if (obj.hasOwnProperty(key)) {
-      clone[key] = deepClone(obj[key])
+      clone[key] = deepClone(obj[key]);
     }
   }
-  return clone
+  return clone;
 }
 
 export default deepClone
