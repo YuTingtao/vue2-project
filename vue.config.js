@@ -1,6 +1,22 @@
+const fs = require('fs')
 const path = require('path')
+
 function resolve(dir) {
   return path.join(__dirname, dir)
+}
+
+// 生成版本JSON文件
+if (process.env.NODE_ENV === 'production') {
+  const version = JSON.stringify({
+    version: 'v_' +  Date.now()
+  })
+  fs.writeFile(resolve('public/version.json'), version, err => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log('版本JSON:', version)
+    }
+  })
 }
 
 module.exports = {
