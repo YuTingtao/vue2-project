@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
     if (err) {
       console.log(err)
     } else {
-      console.log('版本JSON:', version)
+      console.log('版本信息:', version)
     }
   })
 }
