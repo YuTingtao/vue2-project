@@ -10,7 +10,7 @@ export default [
     title: '使用案例',
     path: '',
     name: '',
-    redirect: '/baseCase',
+    redirect: '',
     icon: 'el-icon-magic-stick',
     hidden: 0,
     children: [
@@ -22,9 +22,9 @@ export default [
         icon: '',
         hidden: 0,
         buttons: [ // 按钮权限
-          { name: 'add' },
-          { name: 'edit' },
-          { name: 'delete' }
+          { name: 'add', title: '新增' },
+          { name: 'edit', title: '编辑' },
+          { name: 'delete', title: '删除' }
         ]
       }
     ]
