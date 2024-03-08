@@ -6,17 +6,13 @@ function resolve(dir) {
 }
 
 // 生成版本JSON文件
-if (process.env.NODE_ENV === 'production') {
-  const version = JSON.stringify({
+try {
+  fs.writeFileSync(resolve('public/version.json'), JSON.stringify({
     version: 'v_' +  Date.now()
-  })
-  fs.writeFile(resolve('public/version.json'), version, err => {
-    if (err) {
-      console.log(err)
-    } else {
-      console.log('版本信息:', version)
-    }
-  })
+  }))
+  console.log('JSON文件写入成功')
+} catch (err) {
+  console.log('JSON文件写入失败:', err)
 }
 
 module.exports = {

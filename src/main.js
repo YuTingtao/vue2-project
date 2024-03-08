@@ -11,8 +11,10 @@ import './components/base/svgIcon/index.js'
 // 自定义指令
 import importDirectives from './directives'
 importDirectives()
-// 版本检测
-import checkVersion from './utils/checkVersion.js'
+
+// 检测更新
+import { checkUpdate, autoCheckUpdate } from '@/utils/checkUpdate.js'
+autoCheckUpdate() // 自动检测更新
 
 Vue.use(ElementUI, {
   size: 'medium'
@@ -23,8 +25,7 @@ Vue.config.productionTip = false
 // Vue.config.devtools = true
 // 处理错误
 Vue.config.errorHandler = function (err, vm, info) {
-  // 版本检测
-  checkVersion()
+  checkUpdate() // 检测更新
 }
 
 new Vue({

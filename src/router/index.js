@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
 import { Message } from 'element-ui'
-import checkVersion from '../utils/checkVersion.js'
+import { checkUpdate } from '@/utils/checkUpdate.js'
 
 Vue.use(VueRouter)
 
@@ -74,7 +74,7 @@ router.beforeEach((to, from, next) => {
 })
 
 router.onError((error) => {
-  checkVersion() // 版本检测
+  checkUpdate() // 检测更新
 })
 
 export default router
