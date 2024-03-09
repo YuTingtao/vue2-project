@@ -14,7 +14,7 @@ export default {
         if (!menuObj[path]) {
           el.parentNode.removeChild(el)
         }
-      } else {
+      } else if (menuObj[path]) {
         // 按钮权限
         const { buttons } = menuObj[path]
         if (!buttons.some(item => item.name == btn)) {
