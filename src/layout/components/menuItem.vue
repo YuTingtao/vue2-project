@@ -7,7 +7,7 @@
       <i :class="item.icon"></i>
       <span>{{ item.title }}</span>
     </el-menu-item>
-    <el-submenu v-else :index="item.path || item.redirect">
+    <el-submenu v-else :index="item.redirect || item.path">
       <template #title>
         <i :class="item.icon"></i>
         <span>{{ item.title }}</span>

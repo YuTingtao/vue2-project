@@ -8,22 +8,22 @@ export default {
     const currentRoute = router.currentRoute
     const menuObj = store.getters['menuObj']
     if (typeof binding.value == 'object') {
-      const { path, btn } = binding.value
+      const { name, btn } = binding.value
       if (!btn) {
         // 菜单权限
-        if (!menuObj[path]) {
+        if (!menuObj[name]) {
           el.parentNode.removeChild(el)
         }
-      } else if (menuObj[path]) {
+      } else if (menuObj[name]) {
         // 按钮权限
-        const { buttons } = menuObj[path]
+        const { buttons } = menuObj[name]
         if (!buttons.some(item => item.name == btn)) {
           el.parentNode.removeChild(el)
         }
       }
     } else {
       // 当前路由对应页面按钮权限
-      const { buttons } = menuObj[currentRoute.path]
+      const { buttons } = menuObj[currentRoute.name]
       if (!buttons.some(item => item.name == binding.value)) {
         el.parentNode.removeChild(el)
       }
