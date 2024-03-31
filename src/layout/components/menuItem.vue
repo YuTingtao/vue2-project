@@ -1,13 +1,9 @@
 <template>
   <div v-if="!item.hidden">
-    <el-menu-item
-      v-if="!item.children || item.children.filter(item => !item.hidden).length < 1"
-      :index="item.redirect || item.path"
-    >
-      <i :class="item.icon"></i>
-      <span>{{ item.title }}</span>
-    </el-menu-item>
-    <el-submenu v-else :index="item.redirect || item.path">
+    <!-- 菜单组 -->
+    <el-submenu
+      v-if="item.children && item.children.filter(item => !item.hidden).length > 0"
+      :index="item.title">
       <template #title>
         <i :class="item.icon"></i>
         <span>{{ item.title }}</span>
@@ -17,6 +13,11 @@
         :item="item2">
       </MenuItem>
     </el-submenu>
+    <!-- 菜单 -->
+    <el-menu-item v-else :index="item.path || item.redirect">
+      <i :class="item.icon"></i>
+      <span>{{ item.title }}</span>
+    </el-menu-item>
   </div>
 </template>
 
