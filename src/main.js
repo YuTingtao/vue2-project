@@ -7,7 +7,7 @@ import ElementUI from 'element-ui'
 import './assets/style/element.scss'
 import './assets/style/main.scss'
 // svgIcon
-import './components/base/svgIcon/index.js'
+import './components/SvgIcon/index.js'
 // 自定义指令
 import importDirectives from './directives'
 importDirectives()

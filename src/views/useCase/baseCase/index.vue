@@ -32,7 +32,7 @@
 
 <!-- 选项式API -->
 <script>
-import ImgViewer from '@/components/base/imgViewer/index.vue'
+import ImgViewer from '@/components/ImgViewer/index.vue'
 export default {
   components: {
     ImgViewer
