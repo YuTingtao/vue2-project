@@ -1,7 +1,7 @@
 <template>
   <div class="login-bg">
     <div class="login-box">
-      <h3 class="title">登录系统</h3>
+      <h3 class="title">登录</h3>
       <!-- 表单 -->
       <el-form :model="loginForm" ref="formRef" :rules="rules" size="large">
         <el-form-item label="" prop="userName">

@@ -27,7 +27,7 @@
           router
           :default-active="$route.meta.activePath || $route.path"
           text-color="#fff"
-          background-color="#424548">
+          background-color="#565a5e">
           <MenuItem v-for="item in userMenus" :key="item.id" :item="item"></MenuItem>
         </el-menu>
       </el-scrollbar>
@@ -127,7 +127,7 @@ export default {
   bottom: 0;
   z-index: 110;
   color: #fff;
-  background: #424548;
+  background: #565a5e;
   .el-scrollbar {
     height: calc(100% + 17px);
   }
