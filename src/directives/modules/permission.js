@@ -8,15 +8,15 @@ export default {
     const currentRoute = router.currentRoute
     const menuObj = store.getters['menuObj']
     if (typeof binding.value == 'object') {
-      const { name, btn } = binding.value
+      const { path, btn } = binding.value
       if (!btn) {
         // 菜单权限
-        if (!menuObj[name]) {
+        if (!menuObj[path]) {
           el.parentNode.removeChild(el)
         }
-      } else if (menuObj[name]) {
+      } else if (menuObj[path]) {
         // 按钮权限
-        const { buttons } = menuObj[name]
+        const { buttons } = menuObj[path]
         if (!buttons.some(item => item.name == btn)) {
           el.parentNode.removeChild(el)
         }

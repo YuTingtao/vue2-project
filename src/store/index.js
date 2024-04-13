@@ -9,7 +9,7 @@ const vuexLocal = new VuexPersistence({
 
 import dataDic from './modules/dataDic.js'
 import userMenus from '../router/userMenus.js'
-import { getMenuObj, getFirstMenuName } from './utils.js'
+import { getMenuObj, getFirstMenu } from './utils.js'
 
 Vue.use(Vuex)
 
@@ -22,13 +22,13 @@ const store = new Vuex.Store({
     }
   },
   getters: {
-    // 菜单对象: key为name, value为{ path: '', buttons: [] }
+    // 菜单对象: key为path
     menuObj: (state) => {
       return getMenuObj(state.userMenus)
     },
     // 首个路径
     firstMenuName: (state) => {
-      return getFirstMenuName(state.userMenus[0])
+      return getFirstMenu(state.userMenus[0])
     }
   },
   mutations: {

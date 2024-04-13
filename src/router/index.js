@@ -55,19 +55,19 @@ const router = new VueRouter({
 
 // 路由拦截
 router.beforeEach((to, from, next) => {
-  // 菜单路径
-  const allNames = ['login', '404', ...Object.keys(store.getters.menuObj)]
+  // 所有菜单
+  const allMenus = ['/login', ...Object.keys(store.getters.menuObj)]
   // 第一个菜单路径
-  const firstMenuName = store.getters.firstMenuName
+  const firstMenu = store.getters.firstMenu
 
   // 路由拦截
   if (!store.state.token && to.path !== '/login') {
     next('/login')
-  } else if (!allNames.includes(to.name)) {
-    if (to.path != '/' && to.path != '/404') {
+  } else if (!allMenus.includes(to.path)) {
+    if (to.path != '/') {
       Message.error('访问地址不存在')
     }
-    next(firstMenuName)
+    next(firstMenu)
   } else {
     next()
   }
