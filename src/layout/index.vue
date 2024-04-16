@@ -2,7 +2,7 @@
 <template>
   <div class="app-layout">
     <!-- 头部 -->
-    <div class="app-head" :style="`left: ${isCollapse ? '64px' : '220px'};`">
+    <div class="app-head" :style="`left: ${isCollapse ? '64px' : '200px'};`">
       <i class="menu-collapse" :class="!isCollapse ? 'el-icon-s-fold' : 'el-icon-s-unfold'" @click="toggleCollapse">
       </i>
       <el-dropdown trigger="hover">
@@ -27,13 +27,13 @@
           router
           :default-active="$route.meta.activePath || $route.path"
           text-color="#fff"
-          background-color="#565a5e">
+          background-color="#3c4f60">
           <MenuItem v-for="item in userMenus" :key="item.id" :item="item"></MenuItem>
         </el-menu>
       </el-scrollbar>
     </div>
     <!-- 主体 -->
-    <div class="app-main" :style="`padding-left: ${isCollapse ? '64px' : '220px'};`">
+    <div class="app-main" :style="`padding-left: ${isCollapse ? '64px' : '200px'};`">
       <!-- 页面主体 -->
       <router-view class="app-view"></router-view>
     </div>
@@ -90,7 +90,7 @@ export default {
 .app-head {
   position: fixed;
   top: 0;
-  left: 220px;
+  left: 200px;
   right: 0;
   z-index: 100;
   display: flex;
@@ -127,12 +127,12 @@ export default {
   bottom: 0;
   z-index: 110;
   color: #fff;
-  background: #565a5e;
+  background: #3c4f60;
   .el-scrollbar {
     height: calc(100% + 17px);
   }
   .el-menu {
-    width: 220px;
+    width: 200px;
     border-right: none;
   }
   .el-menu--collapse {
@@ -157,7 +157,7 @@ export default {
 // 主体
 .app-main {
   box-sizing: border-box;
-  padding-left: 220px;
+  padding-left: 200px;
   padding-top: 56px;
   min-height: 100%;
   background: #fff;
