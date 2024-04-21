@@ -25,6 +25,7 @@ Vue.config.productionTip = false
 // Vue.config.devtools = true
 // 处理错误
 Vue.config.errorHandler = function (err, vm, info) {
+  console.log(err, vm, info)
   checkUpdate() // 检测更新
 }
 

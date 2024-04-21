@@ -10,3 +10,9 @@ html, body {
 .v-enter, .v-leave-to {
   opacity: 0;
 }
+
+body {
+  .el-breadcrumb__inner.is-link, .el-breadcrumb__inner a {
+    font-weight: normal;
+  }
+}

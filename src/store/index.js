@@ -1,15 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
 import VuexPersistence from 'vuex-persist'
+import dataDic from './modules/dataDic.js'
+import routes from '../router/modules/index.js'
+import { getMenuObj, getFirstMenu } from './utils.js'
+
 const vuexLocal = new VuexPersistence({
   key: 'vuex',
   storage: window.sessionStorage
 })
-
-import dataDic from './modules/dataDic.js'
-import userMenus from '../router/userMenus.js'
-import { getMenuObj, getFirstMenu } from './utils.js'
 
 Vue.use(Vuex)
 
@@ -26,8 +25,11 @@ const store = new Vuex.Store({
     menuObj: (state) => {
       return getMenuObj(state.userMenus)
     },
-    // 首个路径
-    firstMenuName: (state) => {
+    // 首个菜单
+    firstMenu: (state) => {
+      if (state.userMenus.length < 1) {
+        return '/login'
+      }
       return getFirstMenu(state.userMenus[0])
     }
   },
@@ -50,7 +52,7 @@ const store = new Vuex.Store({
   actions: {
     // 获取菜单
     getUserMenus({ commit }) {
-      commit('setUserMenus', userMenus)
+      commit('setUserMenus', routes)
     }
   },
   modules: {

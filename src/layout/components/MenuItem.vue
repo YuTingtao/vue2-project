@@ -1,22 +1,22 @@
 <template>
-  <div v-if="!item.hidden">
+  <div v-if="!item.meta.hidden">
     <!-- 菜单组 -->
     <el-submenu
-      v-if="item.children && item.children.filter(item => !item.hidden).length > 0"
-      :index="item.title">
+      v-if="item.children && item.children.filter(item => !item.meta.hidden).length > 0"
+      :index="item.path || item.meta.title">
       <template #title>
-        <i :class="item.icon"></i>
-        <span>{{ item.title }}</span>
+        <svg-icon v-if="item.meta.icon" :name="item.meta.icon"></svg-icon>
+        <span>{{ item.meta.title }}</span>
       </template>
       <MenuItem
-        v-for="item2 in item.children" :key="item2.id"
+        v-for="item2 in item.children" :key="item2.path"
         :item="item2">
       </MenuItem>
     </el-submenu>
     <!-- 菜单 -->
-    <el-menu-item v-else :index="item.path || item.redirect">
-      <i :class="item.icon"></i>
-      <span>{{ item.title }}</span>
+    <el-menu-item v-else :index="item.path">
+      <svg-icon v-if="item.meta.icon" :name="item.meta.icon"></svg-icon>
+      <span>{{ item.meta.title }}</span>
     </el-menu-item>
   </div>
 </template>

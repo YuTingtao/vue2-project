@@ -3,7 +3,7 @@
     <div class="login-box">
       <h3 class="title">登录</h3>
       <!-- 表单 -->
-      <el-form :model="loginForm" ref="form" :rules="rules" size="large">
+      <el-form :model="loginForm" ref="formRef" :rules="rules" size="large">
         <el-form-item label="" prop="userName">
           <el-input
             v-model="loginForm.userName"
@@ -22,55 +22,51 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button class="row-btn" type="primary" :loading="loading" @click="handleSubmit">登 录</el-button>
+          <el-button class="row-btn" type="primary" @click="handleSubmit">登 录</el-button>
         </el-form-item>
       </el-form>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Login',
-  data() {
-    return {
-      loginForm: {
-        userName: 'admin',
-        password: '123456'
-      },
-      rules: {
-        userName: [{ required: true, message: '请输入账号/手机号/邮箱', trigger: 'blur' }],
-        password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
-      },
-      loading: false
+<!-- 组合式API写法 -->
+<script setup>
+import { ref, reactive } from 'vue'
+import store from '@/store'
+import router from '@/router'
+import loginApi from '@/api/user/login.js'
+
+const route = router.currentRoute
+
+const loginForm = reactive({
+  userName: 'admin',
+  password: '123456'
+})
+
+const rules = reactive({
+  userName: [{ required: true, message: '请输入账号/手机号/邮箱', trigger: 'blur' }],
+  password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+})
+
+const formRef = ref()
+function handleSubmit() {
+  formRef.value.validate((valid) => {
+    if (valid) {
+      handleLogin()
     }
-  },
-  created() {},
-  methods: {
-    // 提交
-    handleSubmit() {
-      this.$refs.form.validate((valid) => {
-        if (valid) {
-          this.handleLogin()
-        }
-      })
-    },
-    // 登录
-    async handleLogin() {
-      this.loading = true
-      this.$store.commit('setLogin', {
-        token: 'Token-123456789',
-        userInfo: { name: 'admin', avatar: '' }
-      })
-      this.loading = false
-      await this.$store.dispatch('getUserMenus')
-      const redirect = this.$route.query.redirect
-      if (redirect && redirect != '/login') {
-        this.$router.replace(redirect)
-      } else {
-        this.$router.replace(this.$store.getters.firstMenu)
-      }
-    }
+  })
+}
+// 登录
+async function handleLogin() {
+  store.commit('setLogin', {
+    token: 'Token-123456789',
+    userInfo: { name: 'admin', avatar: '' }
+  })
+  await store.dispatch('getUserMenus')
+  if (route.query.redirect && route.query.redirect != '/login') {
+    router.replace(route.query.redirect)
+  } else {
+    router.replace(store.getters.firstMenu)
   }
 }
 </script>

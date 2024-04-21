@@ -3,12 +3,14 @@
   <div class="app-layout">
     <!-- 头部 -->
     <div class="app-head" :style="`left: ${isCollapse ? '64px' : '200px'};`">
-      <i class="menu-collapse" :class="!isCollapse ? 'el-icon-s-fold' : 'el-icon-s-unfold'" @click="toggleCollapse">
-      </i>
+      <i class="menu-collapse" :class="!isCollapse ? 'el-icon-s-fold' : 'el-icon-s-unfold'" @click="toggleCollapse"></i>
+
+      <!-- 面包屑 -->
+      <BreadCrumb></BreadCrumb>
+
       <el-dropdown trigger="hover">
         <div class="app-head-avatar">
-          <el-avatar :src="userInfo.avatar" :size="32" icon="el-icon-user-solid" shape="circle" fit="cover">
-          </el-avatar>
+          <el-avatar :src="userInfo.avatar" :size="32" icon="el-icon-user-solid" shape="circle" fit="cover"></el-avatar>
           <span>{{ userInfo.name }}</span>
           <i class="el-icon-arrow-down"></i>
         </div>
@@ -42,10 +44,11 @@
 
 <script>
 import MenuItem from './components/MenuItem.vue'
+import BreadCrumb from './components/BreadCrumb.vue'
 import loginApi from '@/api/user/login.js'
 
 export default {
-  components: { MenuItem },
+  components: { MenuItem, BreadCrumb },
   data() {
     return {
       isCollapse: false
@@ -95,7 +98,6 @@ export default {
   z-index: 100;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   box-sizing: border-box;
   height: 56px;
   padding: 0 20px;
@@ -109,7 +111,15 @@ export default {
     color: #333;
     cursor: pointer;
   }
+  .el-breadcrumb {
+    margin-left: 12px;
+    margin-right: 20px;
+  }
+  .el-dropdown {
+    margin-left: auto;
+  }
 }
+
 .app-head-avatar {
   display: flex;
   align-items: center;
@@ -134,9 +144,16 @@ export default {
   .el-menu {
     width: 200px;
     border-right: none;
+    .svg-icon {
+      margin-right: 5px;
+      font-size: 18px;
+    }
   }
   .el-menu--collapse {
     width: 64px;
+    .svg-icon {
+      margin-right: 0;
+    }
   }
 }
 

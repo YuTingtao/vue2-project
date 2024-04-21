@@ -1,35 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
+import routes from './modules/index.js'
 import { Message } from 'element-ui'
 import { checkUpdate } from '@/utils/checkUpdate.js'
 
 Vue.use(VueRouter)
 
 // 路由
-const routes = [
+const allRoutes = [
   {
     path: '/',
     name: 'layout',
-    redirect: '/index',
     component: () => import(/* webpackChunkName: "layout" */ '@/layout/index.vue'),
     children: [
-      {
-        path: '/index',
-        name: 'index',
-        component: () => import(/* webpackChunkName: "index" */ '@/views/index/index.vue'),
-        meta: {
-          // activePath: '', // 导航高亮
-        }
-      },
-      {
-        path: '/baseCase',
-        name: 'baseCase',
-        component: () => import(/* webpackChunkName: "baseCase" */ '@/views/useCase/baseCase/index.vue'),
-        meta: {
-          // activePath: '', // 导航高亮
-        }
-      }
+      ...routes
     ]
   },
   // 登录
@@ -41,7 +26,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes,
+  routes: allRoutes,
   model: 'hash', // "hash" | "history" | "abstract"
   base: '/',     // 基础路径
   scrollBehavior(to, from, savedPosition) {
@@ -57,7 +42,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   // 所有菜单
   const allMenus = ['/login', ...Object.keys(store.getters.menuObj)]
-  // 第一个菜单路径
+  // 首个菜单路径
   const firstMenu = store.getters.firstMenu
 
   // 路由拦截
