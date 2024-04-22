@@ -32,7 +32,7 @@ export default {
         matched = matched.slice(1)
       }
       // console.log(matched)
-      if (matched.length > 1) {
+      if (matched.length > 1 || matched[0].meta.parentPath) {
         for (let i = matched.length - 1; i >= 0; i--) {
           const item = matched[i]
           let path = item.path
