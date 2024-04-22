@@ -1,8 +1,8 @@
 <template>
-  <div v-if="!item.meta.hidden">
+  <div v-if="item.meta.visible">
     <!-- 菜单组 -->
     <el-submenu
-      v-if="item.children && item.children.filter(item => !item.meta.hidden).length > 0"
+      v-if="item.children && item.children.filter(item => item.meta.visible).length > 0"
       :index="item.path || item.meta.title">
       <template #title>
         <svg-icon v-if="item.meta.icon" :name="item.meta.icon"></svg-icon>
