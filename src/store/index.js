@@ -52,7 +52,11 @@ const store = new Vuex.Store({
   actions: {
     // 获取菜单
     getUserMenus({ commit }) {
-      commit('setUserMenus', routes)
+      return new Promise((resolve, reject) => {
+        // 执行完异步resolve
+        commit('setUserMenus', routes)
+        resolve()
+      })
     }
   },
   modules: {
