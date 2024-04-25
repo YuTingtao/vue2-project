@@ -48,6 +48,7 @@ import BreadCrumb from './components/BreadCrumb.vue'
 import loginApi from '@/api/user/login.js'
 
 export default {
+  name: 'Layout',
   components: { MenuItem, BreadCrumb },
   data() {
     return {
