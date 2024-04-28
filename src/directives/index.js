@@ -4,7 +4,7 @@ import permission from './modules/permission.js'
 
 function importDirectives() {
   Vue.directive('error', error)
-  Vue.directive('permission', permission)
+  Vue.directive('perm', permission)
 }
 
 export default importDirectives
