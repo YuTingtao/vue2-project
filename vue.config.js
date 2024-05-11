@@ -24,26 +24,6 @@ module.exports = {
   productionSourceMap: false,
   chainWebpack(config) {
     config.resolve.alias.set('@', resolve('src'))
-    // 图片压缩
-    config.module.rule('images').test(/\.(gif|png|jpe?g)$/i)
-      .use('image-webpack-loader').loader('image-webpack-loader').options({
-        mozjpeg: {
-          progressive: true,
-        },
-        optipng: {
-          enabled: false,
-        },
-        pngquant: {
-          quality: [0.8, 0.9],
-          speed: 4
-        },
-        gifsicle: {
-          interlaced: false,
-        },
-        webp: {
-          quality: 75
-        }
-      }).end()
     // svg图标
     config.module.rule('svg').exclude.add(resolve('src/assets/icon')).end()
     config.module.rule('icon').test(/\.svg$/).include.add(resolve('src/assets/icon')).end()
