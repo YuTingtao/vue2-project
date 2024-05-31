@@ -8,11 +8,11 @@
     <div class="row-box">
       <span>按钮权限：</span>
       <!-- 简单用法 -->
-      <el-button v-perm="'add'" type="primary" @click="$router.push('/useCase/baseAdd')">新增</el-button>
-      <el-button v-perm="'edit'" type="primary">编辑</el-button>
-      <el-button v-perm="'delete'" type="primary">删除</el-button>
+      <el-button v-if="hasPerm('add')" type="primary" @click="$router.push('/useCase/baseAdd')">新增</el-button>
+      <el-button v-if="hasPerm('edit')" type="primary">编辑</el-button>
+      <el-button v-if="hasPerm('delete')" type="primary">删除</el-button>
       <!-- 无权限 -->
-      <el-button v-perm="'export'" type="primary">导出</el-button>
+      <el-button v-if="hasPerm('export')" type="primary">导出</el-button>
     </div>
 
     <div class="row-box">
@@ -27,6 +27,7 @@
 <!-- 选项式API -->
 <script>
 import ImgViewer from '@/components/ImgViewer/index.vue'
+import hasPerm from '@/utils/permission.js'
 export default {
   name: 'UseCaseBase',
   components: {
@@ -42,7 +43,7 @@ export default {
 
   },
   methods: {
-    
+    hasPerm,
   }
 }
 </script>

@@ -4,7 +4,7 @@ const modules = {}
 
 contexts.keys().forEach(key => {
   if (key == './index.js') return
-  modules[key.replace(/(\.\/|\.js)/gi, '')] = contexts(key).default
+  modules[key.replace(/(.*\/)*([^.]+).*/gi, '$2')] = contexts(key).default
 })
 
 // 使用时 import { xx } from '@/utils

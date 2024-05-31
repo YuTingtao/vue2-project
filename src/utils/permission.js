@@ -1,7 +1,5 @@
 import router from '@/router'
-import { useStore } from '@/store'
-const currentRoute = router.currentRoute
-const store = useStore()
+import store from '@/store'
 
 /**
  * 判断是否有按钮权限
@@ -10,11 +8,12 @@ const store = useStore()
  * @returns {Boolean}
  */
 function hasPerm(str, path) {
+  const currentRoute = router.currentRoute
   if (!path) {
-    path = currentRoute.value.path
+    path = currentRoute.path
   }
-  const { buttons } = store.menuObj[path]
-  if (buttons.some(item => item.name == str)) {
+  const { buttons = [] } = store.getters.menuObj[path].meta
+  if (buttons.some(item => item == str)) {
     return true
   } else {
     return false
