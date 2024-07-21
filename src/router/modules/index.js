@@ -26,19 +26,6 @@ export default [
           parentPath: '',
         }
       },
-      {
-        path: '/useCase/baseAdd',
-        component: () => import('@/views/useCase/baseAdd/index.vue'),
-        meta: {
-          type: 1,
-          title: '新增',
-          icon: '',
-          visible: 0,
-          buttons: [], // 按钮权限
-          activePath: '/useCase/base', // 设置高亮菜单路径，例如详情页设置列表页高亮
-          parentPath: '/useCase/base', // 父级路径，配置父级面包屑
-        }
-      },
     ]
   },
   {
