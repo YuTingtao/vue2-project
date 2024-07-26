@@ -14,7 +14,7 @@
       </MenuItem>
     </el-submenu>
     <!-- 菜单 -->
-    <el-menu-item v-else :index="item.path">
+    <el-menu-item v-else :index="item.path" @click="routerTo(item.path)">
       <svg-icon v-if="item.meta.icon" :name="item.meta.icon"></svg-icon>
       <span>{{ item.meta.title }}</span>
     </el-menu-item>
@@ -32,6 +32,12 @@ export default {
   },
   data() {
     return {}
+  },
+  methods: {
+    // 路由跳转
+    routerTo(path) {
+      this.$router.push(path)
+    }
   }
 }
 </script>

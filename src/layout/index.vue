@@ -26,7 +26,7 @@
       <el-scrollbar>
         <el-menu
           :collapse="isCollapse"
-          router
+          :unique-opened="false"
           :default-active="$route.meta.activePath || $route.path"
           text-color="#fff"
           background-color="#3c4f60">
@@ -146,8 +146,14 @@ export default {
     width: 200px;
     border-right: none;
     .svg-icon {
+      width: 24px;
       margin-right: 5px;
       font-size: 18px;
+    }
+  }
+  .el-menu-item {
+    & > span {
+      margin-left: 9px;
     }
   }
   .el-menu--collapse {

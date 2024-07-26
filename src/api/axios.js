@@ -44,7 +44,7 @@ axios.interceptors.request.use(
 // 相应拦截
 axios.interceptors.response.use(
   res => {
-    if (res.status >= 200 && res.status < 300) {
+    if (res.status == 200) {
       if (res.data instanceof Blob || res.data instanceof ArrayBuffer) {
         return res
       }
@@ -58,7 +58,7 @@ axios.interceptors.response.use(
       }
       return res.data
     } else {
-      return Promise.reject(res)
+      return Promise.reject(res.data)
     }
   },
   error => {
@@ -68,7 +68,7 @@ axios.interceptors.response.use(
           toast('网络请求不存在')
           break
         default: // 其他错误
-          toast('网络请求错误')
+          toast('网络异常')
       }
       return Promise.reject(error)
     } else {

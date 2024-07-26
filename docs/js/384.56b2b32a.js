@@ -1,1 +1,0 @@
-"use strict";(self["webpackChunkvue2_project"]=self["webpackChunkvue2_project"]||[]).push([[384],{4384:function(e,t,u){u.r(t),u.d(t,{default:function(){return l}});var n=function(){var e=this,t=e._self._c;return t("div",{},[e._v(" 新增 ")])},r=[],c={name:"UseCaseBaseAdd",data(){return{}},created(){},methods:{}},s=c,a=u(1656),d=(0,a.A)(s,n,r,!1,null,"4dce7c68",null),l=d.exports}}]);
