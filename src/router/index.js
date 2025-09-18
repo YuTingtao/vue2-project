@@ -24,7 +24,7 @@ const allRoutes = [
 
 const router = new VueRouter({
   routes: allRoutes,
-  model: 'hash', // "hash" | "history" | "abstract"
+  model: 'history', // "hash" | "history" | "abstract"
   base: '/', // 基础路径
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
