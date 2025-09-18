@@ -1,4 +1,5 @@
-name: Github Pages CI # 任务名称
+# 任务名称
+name: Github Pages CI
 on:
   # 监听push操作
   push:
