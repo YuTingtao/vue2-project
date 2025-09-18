@@ -12,22 +12,12 @@ import './components/SvgIcon/index.js'
 import importDirectives from './directives'
 importDirectives()
 
-// 检测更新
-import { checkUpdate, autoCheckUpdate } from '@/utils/checkUpdate.js'
-autoCheckUpdate() // 自动检测更新
-
 Vue.use(ElementUI, {
   size: 'medium'
 })
 // EventBus
 Vue.prototype.$bus = new Vue()
 Vue.config.productionTip = false
-// Vue.config.devtools = true
-// 处理错误
-Vue.config.errorHandler = function (err, vm, info) {
-  console.log(err, vm, info)
-  checkUpdate() // 检测更新
-}
 
 new Vue({
   router,

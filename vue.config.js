@@ -1,25 +1,12 @@
-const fs = require('fs')
 const path = require('path')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-// 生成版本JSON文件
-if (process.env.NODE_ENV !== 'development') {
-  try {
-    fs.writeFileSync(resolve('public/version.json'), JSON.stringify({
-      version: 'v_' +  Date.now()
-    }))
-    console.log('JSON文件写入成功')
-  } catch (err) {
-    console.log('JSON文件写入失败:', err)
-  }
-}
-
 module.exports = {
   publicPath: './',
-  outputDir: 'docs', // 打包生产的目录
+  outputDir: 'dist', // 打包生产的目录
   transpileDependencies: ['vuex-persist'], // 需要转语法的依赖
   productionSourceMap: false,
   chainWebpack(config) {

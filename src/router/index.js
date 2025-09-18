@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import store from '../store'
 import routes from './modules/index.js'
 import { Message } from 'element-ui'
-import { checkUpdate } from '@/utils/checkUpdate.js'
 
 Vue.use(VueRouter)
 
@@ -13,9 +12,7 @@ const allRoutes = [
     path: '/',
     name: 'layout',
     component: () => import(/* webpackChunkName: "layout" */ '@/layout/index.vue'),
-    children: [
-      ...routes
-    ]
+    children: [...routes]
   },
   // 登录
   {
@@ -28,7 +25,7 @@ const allRoutes = [
 const router = new VueRouter({
   routes: allRoutes,
   model: 'hash', // "hash" | "history" | "abstract"
-  base: '/',     // 基础路径
+  base: '/', // 基础路径
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
@@ -56,10 +53,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-})
-
-router.onError((error) => {
-  checkUpdate() // 检测更新
 })
 
 export default router
