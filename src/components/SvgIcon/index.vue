@@ -23,10 +23,10 @@ export default {
   },
   computed: {
     symbolId() {
-      return `#icon-${this.name}`
+      return `#icon-${this.name}`;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,13 +1,13 @@
 // 自动化导入
-const contexts = require.context('./', false, /\.js$/)
-const modules = {}
+const contexts = require.context('./', false, /\.js$/);
+const modules = {};
 
 contexts.keys().forEach(key => {
-  if (key == './index.js') return
-  modules[key.replace(/(.*\/)*([^.]+).*/gi, '$2')] = contexts(key).default
-})
+  if (key == './index.js') return;
+  modules[key.replace(/(.*\/)*([^.]+).*/gi, '$2')] = contexts(key).default;
+});
 
 // 使用时 import { xx } from '@/utils
 module.exports = {
   ...modules
-}
+};

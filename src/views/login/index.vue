@@ -44,7 +44,7 @@ export default {
         password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
       },
       loading: false
-    }
+    };
   },
   created() {},
   methods: {
@@ -52,28 +52,28 @@ export default {
     onSubmit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          this.handleLogin()
+          this.handleLogin();
         }
-      })
+      });
     },
     // 登录
     async handleLogin() {
-      this.loading = true
+      this.loading = true;
       this.$store.commit('setLogin', {
         token: 'Token-123456789',
         userInfo: { name: 'admin', avatar: '' }
-      })
-      this.loading = false
-      await this.$store.dispatch('getUserMenus')
-      const redirect = this.$route.query.redirect
+      });
+      this.loading = false;
+      await this.$store.dispatch('getUserMenus');
+      const redirect = this.$route.query.redirect;
       if (redirect && redirect != '/login') {
-        this.$router.replace(redirect)
+        this.$router.replace(redirect);
       } else {
-        this.$router.replace(this.$store.getters.firstMenu)
+        this.$router.replace(this.$store.getters.firstMenu);
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

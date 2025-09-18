@@ -1,5 +1,5 @@
-import router from '@/router'
-import store from '@/store'
+import router from '@/router';
+import store from '@/store';
 
 /**
  * 判断是否有按钮权限
@@ -8,16 +8,16 @@ import store from '@/store'
  * @returns {Boolean}
  */
 function hasPerm(str, path) {
-  const currentRoute = router.currentRoute
+  const currentRoute = router.currentRoute;
   if (!path) {
-    path = currentRoute.path
+    path = currentRoute.path;
   }
-  const { buttons = [] } = store.getters.menuObj[path].meta
+  const { buttons = [] } = store.getters.menuObj[path].meta;
   if (buttons.some(item => item == str)) {
-    return true
+    return true;
   } else {
-    return false
+    return false;
   }
 }
 
-export default hasPerm
+export default hasPerm;

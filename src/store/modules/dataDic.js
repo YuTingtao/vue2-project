@@ -13,6 +13,6 @@ const dataDic = {
   actions: {
 
   }
-}
+};
 
-export default dataDic
+export default dataDic;

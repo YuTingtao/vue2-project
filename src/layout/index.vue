@@ -43,9 +43,9 @@
 </template>
 
 <script>
-import MenuItem from './components/MenuItem.vue'
-import BreadCrumb from './components/BreadCrumb.vue'
-import loginApi from '@/api/user/login.js'
+import MenuItem from './components/MenuItem.vue';
+import BreadCrumb from './components/BreadCrumb.vue';
+import loginApi from '@/api/user/login.js';
 
 export default {
   name: 'Layout',
@@ -53,35 +53,35 @@ export default {
   data() {
     return {
       isCollapse: false
-    }
+    };
   },
   computed: {
     userInfo() {
-      return this.$store.state.userInfo
+      return this.$store.state.userInfo;
     },
     userMenus() {
-      return this.$store.state.userMenus
+      return this.$store.state.userMenus;
     }
   },
   methods: {
     toggleCollapse() {
-      this.isCollapse = !this.isCollapse
+      this.isCollapse = !this.isCollapse;
     },
     // 退出登录
     handleLogout() {
       loginApi
         .logout()
         .then(res => {
-          this.$store.commit('setLogout')
-          this.$router.replace('/login')
+          this.$store.commit('setLogout');
+          this.$router.replace('/login');
         })
         .catch(err => {
-          this.$store.commit('setLogout')
-          this.$router.replace('/login')
-        })
+          this.$store.commit('setLogout');
+          this.$router.replace('/login');
+        });
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

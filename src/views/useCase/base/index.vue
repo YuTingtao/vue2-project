@@ -27,8 +27,8 @@
 
 <!-- 选项式API -->
 <script>
-import ImgViewer from '@/components/ImgViewer/index.vue'
-import hasPerm from '@/utils/permission.js'
+import ImgViewer from '@/components/ImgViewer/index.vue';
+import hasPerm from '@/utils/permission.js';
 export default {
   name: 'UseCaseBase',
   components: {
@@ -41,7 +41,7 @@ export default {
         'https://img2.baidu.com/it/u=2193238619,3962578777&fm=253&fmt=auto&app=120&f=JPEG?w=1067&h=800',
         'https://img0.baidu.com/it/u=2099628,2438611947&fm=253&fmt=auto&app=138&f=JPEG?w=755&h=500'
       ]
-    }
+    };
   },
   created() {
 
@@ -49,7 +49,7 @@ export default {
   methods: {
     hasPerm,
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

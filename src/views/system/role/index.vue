@@ -7,11 +7,11 @@
 <script>
 export default {
   data() {
-    return {}
+    return {};
   },
   created() {},
   methods: {}
-}
+};
 </script>
 
 <style lang="scss" scoped>

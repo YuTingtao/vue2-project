@@ -1,18 +1,18 @@
-const path = require('path')
+const path = require('path');
 
 function resolve(dir) {
-  return path.join(__dirname, dir)
+  return path.join(__dirname, dir);
 }
 
 module.exports = {
-  publicPath: './',
+  publicPath: '/vue2-project/',
   outputDir: 'dist', // 打包生产的目录
   transpileDependencies: ['vuex-persist'], // 需要转语法的依赖
   productionSourceMap: false,
   chainWebpack(config) {
-    config.resolve.alias.set('@', resolve('src'))
+    config.resolve.alias.set('@', resolve('src'));
     // svg图标
-    config.module.rule('svg').exclude.add(resolve('src/assets/icon')).end()
+    config.module.rule('svg').exclude.add(resolve('src/assets/icon')).end();
     config.module
       .rule('icon')
       .test(/\.svg$/)
@@ -23,7 +23,7 @@ module.exports = {
       .options({
         symbolId: 'icon-[name]'
       })
-      .end()
+      .end();
     // 打包分析
     // if (process.env.NODE_ENV === 'production') {
     //   config.plugin('webpack-bundle-analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
@@ -37,7 +37,7 @@ module.exports = {
     }
   },
   devServer: {
-    host: true,
+    host: '0.0.0.0',
     port: 8080,
     open: true,
     // 代理
@@ -49,4 +49,4 @@ module.exports = {
       }
     }
   }
-}
+};

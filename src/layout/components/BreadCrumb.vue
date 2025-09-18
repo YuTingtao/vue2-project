@@ -12,13 +12,13 @@ export default {
   data() {
     return {
       breadcrumbs: []
-    }
+    };
   },
   watch: {
     // 监听路由path
     '$route.path': {
       handler: function() {
-        this.getBreadcrumbs()
+        this.getBreadcrumbs();
       },
       immediate: true
     }
@@ -26,28 +26,28 @@ export default {
   methods: {
     // 获取面包屑数据
     getBreadcrumbs() {
-      this.breadcrumbs = []
-      let matched = this.$route.matched
+      this.breadcrumbs = [];
+      let matched = this.$route.matched;
       if (matched[0].name == 'layout') {
-        matched = matched.slice(1)
+        matched = matched.slice(1);
       }
       // console.log(matched)
       if (matched.length > 1 || matched[0].meta.parentPath) {
         for (let i = matched.length - 1; i >= 0; i--) {
-          const item = matched[i]
-          let path = item.path
+          const item = matched[i];
+          let path = item.path;
           // 最后一层或者菜单模块的path为空
           if ((i == matched.length - 1) || item.meta.type == 0) {
-            path = ''
+            path = '';
           }
           this.breadcrumbs.unshift({
             path: path,
             title: item.meta.title
-          })
+          });
           // 添加自定义parentPath
-          const parentPath = item.meta.parentPath || ''
+          const parentPath = item.meta.parentPath || '';
           if (parentPath) {
-            this.breadcrumbs.unshift(...this.getParentsBread(parentPath))
+            this.breadcrumbs.unshift(...this.getParentsBread(parentPath));
           }
         }
       }
@@ -55,22 +55,22 @@ export default {
     // 递归获取父级面包屑
     getParentsBread(path, arr = []) {
       // 所有路由
-      const routes = this.$router.getRoutes()
-      const parent = routes.find(item => item.path == path)
+      const routes = this.$router.getRoutes();
+      const parent = routes.find(item => item.path == path);
       if (parent) {
         arr.unshift({
           path: parent.meta.type == 0 ? '' : parent.path,
           title: parent.meta.title
-        })
+        });
       }
       if (parent.meta.parentPath) {
-        return this.getParentsBread(parent.meta.parentPath, arr)
+        return this.getParentsBread(parent.meta.parentPath, arr);
       } else {
-        return arr
+        return arr;
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

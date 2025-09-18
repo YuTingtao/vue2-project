@@ -31,15 +31,15 @@ export default {
     }
   },
   data() {
-    return {}
+    return {};
   },
   methods: {
     // 路由跳转
     routerTo(path) {
-      this.$router.push(path)
+      this.$router.push(path);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
