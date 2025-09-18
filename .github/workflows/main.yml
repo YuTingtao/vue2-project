@@ -1,9 +1,9 @@
 name: Github Pages CI # 任务名称
 on:
-  #监听push操作
+  # 监听push操作
   push:
     branches:
-      - master # 这里只配置了master分支，所以只有推送master分支才会触发以下任务
+      - master
 jobs:
   # 任务ID
   build-and-deploy:
@@ -15,13 +15,27 @@ jobs:
       - name: Checkout  ️
         uses: actions/checkout@v4
 
-      - name: Install and Build # 安装依赖、打包，如果提前已打包好无需这一步
+      # 安装 Node.js
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      # 使用 pnpm
+      # - uses: pnpm/action-setup@v4
+      #   with:
+      #     version: latest
+      #     run_install: false # 不自动执行安装依赖命令
+
+      # 安装依赖、打包
+      - name: Install and Build
         run: |
           npm install
           npm run build
 
-      - name: Deploy # 部署
+      # 部署到 GitHub Pages
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages # 部署后提交到那个分支
-          folder: dist # 这里填打包好的目录名称
+          branch: gh-pages
+          folder: dist
