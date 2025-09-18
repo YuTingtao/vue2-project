@@ -24,8 +24,7 @@ const allRoutes = [
 
 const router = new VueRouter({
   routes: allRoutes,
-  mode: 'history', // "hash" | "history" | "abstract"
-  base: '/vue2-project/', // 部署应用包时的基本 URL
+  mode: 'hash', // "hash" | "history" | "abstract"
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;

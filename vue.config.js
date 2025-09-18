@@ -5,7 +5,7 @@ function resolve(dir) {
 }
 
 module.exports = {
-  publicPath: '/vue2-project/',
+  publicPath: './', // 公共路径
   outputDir: 'dist', // 打包生产的目录
   transpileDependencies: ['vuex-persist'], // 需要转语法的依赖
   productionSourceMap: false,
