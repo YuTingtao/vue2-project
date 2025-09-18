@@ -13,14 +13,21 @@ module.exports = {
     config.resolve.alias.set('@', resolve('src'))
     // svg图标
     config.module.rule('svg').exclude.add(resolve('src/assets/icon')).end()
-    config.module.rule('icon').test(/\.svg$/).include.add(resolve('src/assets/icon')).end()
-      .use('svg-sprite-loader').loader('svg-sprite-loader').options({
+    config.module
+      .rule('icon')
+      .test(/\.svg$/)
+      .include.add(resolve('src/assets/icon'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
         symbolId: 'icon-[name]'
-      }).end()
+      })
+      .end()
     // 打包分析
-    if (process.env.NODE_ENV === 'production') {
-      config.plugin('webpack-bundle-analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
-    }
+    // if (process.env.NODE_ENV === 'production') {
+    //   config.plugin('webpack-bundle-analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+    // }
   },
   css: {
     loaderOptions: {
@@ -37,7 +44,7 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
-        changeOrigin: true,
+        changeOrigin: true
         // rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
