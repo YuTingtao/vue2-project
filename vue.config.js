@@ -37,8 +37,8 @@ module.exports = {
     }
   },
   devServer: {
-    host: '0.0.0.0',
-    port: 8082,
+    host: true,
+    port: 8080,
     open: true,
     // 代理
     proxy: {
